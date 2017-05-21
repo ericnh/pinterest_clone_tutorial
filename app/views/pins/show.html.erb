@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pin.description %>
+</p>
+
+<% if user_signed_in? %>
+  <%= link_to like_pin_path(@pin), method: :put, class: 'btn btn-secondary' do %>
+    <i class="fa fa-heart"></i>
+    <%= @pin.get_upvotes.size %>
+  <% end %>
+
+  <%= link_to 'Edit', edit_pin_path(@pin) %> |
+  <%= link_to 'Back', pins_path %>
+<% end %>
